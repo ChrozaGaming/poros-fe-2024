@@ -35,7 +35,9 @@ const PokemonList = () => {
             </div>
             {selectedPokemon && (
                 <div className="selected-pokemon">
-                    <img src={selectedPokemon.sprites.front_default} alt={selectedPokemon.name} className="selected-pokemon-img"/>
+                    <img src={selectedPokemon.sprites.front_default} alt={selectedPokemon.name}
+                         className="selected-pokemon-img"/>
+                    <h2>{selectedPokemon.name}</h2> {/* Add this line */}
                     <div className="stats-container">
                         {selectedPokemon.stats.map((stat, index) => (
                             <Card key={index} className="stat-card">

@@ -45,9 +45,13 @@
 }
 
 .stat-card {
+    position: -ms-device-fixed; /* or relative, fixed, sticky */
+    top: 30px; /* adjust as needed */
+    left: 30px; /* adjust as needed */
+    width: 200px;
     margin-bottom: 30px;
-    margin-left: 30px;
-    background-color: aquamarine;
+    margin-right: 30px;
+    background-color: cornsilk;
 }
 
 /* Responsive styles */
