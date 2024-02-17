@@ -7,6 +7,7 @@ import '../../styles/PokemonList.css'; // import the CSS file
 const PokemonList = () => {
     const [pokemonList, setPokemonList] = useState([]);
     const [selectedPokemon, setSelectedPokemon] = useState(null);
+    const [search, setSearch] = useState(''); // Define search state
 
     useEffect(() => {
         fetch('https://pokeapi.co/api/v2/pokemon?limit=100')
@@ -17,13 +18,27 @@ const PokemonList = () => {
     const handleClick = (pokemonName) => {
         fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
             .then(response => response.json())
-            .then(data => setSelectedPokemon(data));
+            .then(data => {
+                // Ensure that setting the selected Pokemon does not affect the layout of other elements
+                setSelectedPokemon(data);
+            });
     };
 
+    const handleSearchChange = (event) => { // Define handleSearchChange function
+        setSearch(event.target.value);
+    };
+
+    const handleSearch = (event) => { // Define handleSearch function
+        event.preventDefault();
+    };
+
+    const filteredPokemonList = pokemonList.filter(pokemon => pokemon.name.includes(search));
+
     return (
+
         <div className="container">
             <div className="pokemon-list">
-                {pokemonList.map((pokemon, index) => (
+                {filteredPokemonList.map((pokemon, index) => (
                     <Card key={index} className="pokemon-card">
                         <ListGroup variant="flush">
                             <ListGroup.Item onClick={() => handleClick(pokemon.name)} className="pokemon-item">
@@ -34,6 +49,7 @@ const PokemonList = () => {
                 ))}
             </div>
             {selectedPokemon && (
+
                 <div className="selected-pokemon">
                     <img src={selectedPokemon.sprites.front_default} alt={selectedPokemon.name}
                          className="selected-pokemon-img"/>

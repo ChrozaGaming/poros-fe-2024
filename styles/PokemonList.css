@@ -17,6 +17,8 @@
 .pokemon-card {
     flex: 0 0 auto;
     margin-bottom: 40px;
+    background-color: aqua;
+    justify-content: center;
 }
 
 .pokemon-item {
