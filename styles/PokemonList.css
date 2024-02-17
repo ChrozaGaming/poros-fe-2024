@@ -101,10 +101,12 @@
         align-items: center;
         flex-direction: column;
         padding: 10px 0;
-        width: 100%;
+        width: 200%;
     }
 
     .stat-card {
         margin: 10px 0;
+        left: 0px;
+        right: 30px;
     }
 }

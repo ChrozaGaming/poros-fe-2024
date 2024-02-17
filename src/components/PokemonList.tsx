@@ -27,7 +27,7 @@ const PokemonList = () => {
                     <Card key={index} className="pokemon-card">
                         <ListGroup variant="flush">
                             <ListGroup.Item onClick={() => handleClick(pokemon.name)} className="pokemon-item">
-                                {pokemon.name}
+                                {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
                             </ListGroup.Item>
                         </ListGroup>
                     </Card>
@@ -37,12 +37,12 @@ const PokemonList = () => {
                 <div className="selected-pokemon">
                     <img src={selectedPokemon.sprites.front_default} alt={selectedPokemon.name}
                          className="selected-pokemon-img"/>
-                    <h2>{selectedPokemon.name}</h2> {/* Add this line */}
+                    <h2>{selectedPokemon.name.toUpperCase()}</h2> {/* Add this line */}
                     <div className="stats-container">
                         {selectedPokemon.stats.map((stat, index) => (
                             <Card key={index} className="stat-card">
                                 <Card.Body>
-                                    <Card.Title>{stat.stat.name}</Card.Title>
+                                    <Card.Title>{stat.stat.name.charAt(0).toUpperCase() + stat.stat.name.slice(1)}</Card.Title>
                                     <Card.Text>{stat.base_stat}</Card.Text>
                                 </Card.Body>
                             </Card>
