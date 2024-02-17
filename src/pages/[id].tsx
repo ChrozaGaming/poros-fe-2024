@@ -1,18 +1,12 @@
-// src/pages/[id].tsx
 import React from 'react';
-import { useRouter } from 'next/router';
-import PokemonDetails from '../components/PokemonDetails';
+import PokemonList from '../components/PokemonList';
 
-const PokemonPage = () => {
-    const router = useRouter();
-    const { id } = router.query;
-
+const IndexPage = () => {
     return (
         <div>
-            <h1>Pokemon Details</h1>
-            <PokemonDetails id={id} />
+            <PokemonList />
         </div>
     );
 };
 
-export default PokemonPage;
+export default IndexPage;

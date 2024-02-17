@@ -14,22 +14,6 @@ export const fetchPokemon = () => {
     };
 };
 
-import axios from 'axios';
-
-export const fetchPokemon = () => {
-    return dispatch => {
-        dispatch(fetchPokemonRequest());
-        axios
-            .get('https://pokeapi.co/api/v2/pokemon')
-            .then(response => {
-                dispatch(fetchPokemonSuccess(response.data.results));
-            })
-            .catch(error => {
-                dispatch(fetchPokemonFailure(error.message));
-            });
-    };
-};
-
 const fetchPokemonRequest = () => {
     return { type: 'FETCH_POKEMON_REQUEST' };
 };
@@ -42,11 +26,11 @@ const fetchPokemonFailure = error => {
     return { type: 'FETCH_POKEMON_FAILURE', payload: error };
 };
 
-export const fetchPokemonDetails = (id) => {
+export const fetchPokemonDetails = (name) => {
     return dispatch => {
         dispatch(fetchPokemonDetailsRequest());
         axios
-            .get(`https://pokeapi.co/api/v2/pokemon/${id}`)
+            .get(`https://pokeapi.co/api/v2/pokemon/${name}`)
             .then(response => {
                 dispatch(fetchPokemonDetailsSuccess(response.data));
             })

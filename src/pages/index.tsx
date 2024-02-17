@@ -1,11 +1,10 @@
-// src/pages/index.tsx
 import React from 'react';
 import PokemonList from '../components/PokemonList';
 
 const IndexPage = () => {
     return (
         <div>
-            <h1>Pokemon List</h1>
+            <h1>Allss Pokemon</h1>
             <PokemonList />
         </div>
     );
