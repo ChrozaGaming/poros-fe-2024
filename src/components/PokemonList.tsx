@@ -23,7 +23,7 @@ const PokemonList = () => {
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
             <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'flex-start', maxWidth: '50%', maxHeight: '100vh', overflowY: 'auto' }}>
                 {pokemonList.map((pokemon, index) => (
-                    <Card key={index} style={{ marginBottom: '10px', flex: '0 0 auto' }}>
+                    <Card key={index} style={{ marginBottom: '40px', flex: '0 0 auto' }}>
                         <ListGroup variant="flush">
                             <ListGroup.Item onClick={() => handleClick(pokemon.name)} style={{ cursor: 'pointer' }}>
                                 {pokemon.name}
@@ -33,8 +33,23 @@ const PokemonList = () => {
                 ))}
             </div>
             {selectedPokemon && (
-                <div style={{ maxWidth: '50%' }}>
-                    <img src={selectedPokemon.sprites.front_default} alt={selectedPokemon.name} />
+                <div style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    width: '50%',
+                    height: '100vh'
+                }}>
+                    <img src={selectedPokemon.sprites.front_default} alt={selectedPokemon.name}
+                         style={{width: '300px', height: '300px'}}/>
+                    <ListGroup variant="flush">
+                        {selectedPokemon.stats.map((stat, index) => (
+                            <ListGroup.Item key={index}>
+                                {stat.stat.name}: {stat.base_stat}
+                            </ListGroup.Item>
+                        ))}
+                    </ListGroup>
                 </div>
             )}
         </div>
