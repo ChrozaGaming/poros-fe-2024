@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
+import Spinner from 'react-bootstrap/Spinner';
 import '../../styles/PokemonList.css';
 
 const PokemonList = () => {
@@ -9,6 +10,7 @@ const PokemonList = () => {
     const [selectedPokemon, setSelectedPokemon] = useState(null);
     const [search, setSearch] = useState('');
     const [activePokemon, setActivePokemon] = useState(null);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         fetch('https://pokeapi.co/api/v2/pokemon?limit=100')
@@ -17,11 +19,15 @@ const PokemonList = () => {
     }, []);
 
     const handleClick = (pokemonName) => {
+        setLoading(true);
         fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
             .then(response => response.json())
             .then(data => {
-                setSelectedPokemon(data);
-                setActivePokemon(pokemonName);
+                setTimeout(() => {
+                    setSelectedPokemon(data);
+                    setActivePokemon(pokemonName);
+                    setLoading(false);
+                }, 3000);
             });
     };
 
@@ -53,7 +59,11 @@ const PokemonList = () => {
                     </Card>
                 ))}
             </div>
-            {selectedPokemon && (
+            {loading ? (
+                <Spinner animation="border" role="status">
+                    <span className="sr-only"></span>
+                </Spinner>
+            ) : selectedPokemon && (
                 <div className="selected-pokemon">
                     <img src={selectedPokemon.sprites.front_default} alt={selectedPokemon.name}
                          className="selected-pokemon-img"/>

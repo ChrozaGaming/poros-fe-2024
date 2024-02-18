@@ -5,7 +5,7 @@ import '../../styles/pages/index.css'
 const IndexPage = () => {
     return (
         <div>
-            <h1>All Pokemon</h1>
+            <h1>List Pokemon</h1>
             <PokemonList />
         </div>
     );
