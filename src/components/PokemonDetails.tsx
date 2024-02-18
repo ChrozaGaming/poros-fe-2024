@@ -31,7 +31,7 @@ const PokemonDetails = ({ id }) => {
         <div>
             <h2>{pokemonDetails.name}</h2>
             <img src={pokemonDetails.sprites.front_default} alt={pokemonDetails.name} />
-            {/* Display other details as needed */}
+            {}
         </div>
     );
 };

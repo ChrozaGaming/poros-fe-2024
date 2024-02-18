@@ -1,0 +1,11 @@
+.suggestions-sidebar {
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 200px;
+    overflow: auto;
+    background-color: #f9f9f9;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}

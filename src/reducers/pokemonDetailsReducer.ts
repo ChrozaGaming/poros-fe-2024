@@ -1,4 +1,3 @@
-// src/reducers/pokemonDetailsReducer.ts
 const initialState = {
     loading: false,
     data: {},
