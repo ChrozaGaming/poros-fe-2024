@@ -138,6 +138,11 @@
         width: 100%;
     }
 
+    .large-spinner {
+        width: 20rem;
+        height: 20rem;
+    }
+
     .stats-container {
         align-items: center;
         flex-direction: column;
@@ -149,5 +154,12 @@
         margin: 10px 0;
         left: 0px;
         right: 30px;
+    }
+}
+
+@media (max-width: 600px) {
+    .mobile-centered-spinner {
+        top: 50% !important;
+        left: 36% !important;
     }
 }

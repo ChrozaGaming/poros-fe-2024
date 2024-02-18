@@ -27,7 +27,7 @@ const PokemonList = () => {
                     setSelectedPokemon(data);
                     setActivePokemon(pokemonName);
                     setLoading(false);
-                }, 3000);
+                }, 1500);
             });
     };
 
@@ -60,7 +60,18 @@ const PokemonList = () => {
                 ))}
             </div>
             {loading ? (
-                <Spinner animation="border" role="status">
+                <Spinner
+                    animation="border"
+                    role="status"
+                    className="mobile-centered-spinner"
+                    style={{
+                        width: '7rem',
+                        height: '7rem',
+                        position: 'absolute',
+                        top: '37%',
+                        left: '66%',
+                    }}
+                >
                     <span className="sr-only"></span>
                 </Spinner>
             ) : selectedPokemon && (
